@@ -4,5 +4,5 @@ import LibraryContainer from "./library"
 
 ReactDOM.render(
   <LibraryContainer />,
-  document.getElementById("root")
+  document.getElementById("library")
 )

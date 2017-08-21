@@ -12,19 +12,18 @@ export default class BooksComponent extends React.Component {
   }
 
   render() {
-    const { params: { name, autor } } = this.props
+    const { params: { name, author } } = this.props
     
     return (
        <div>
         <span>{ name }</span>
         <span> - </span>
-        <span>{ autor }</span>
+        <span>{ author }</span>
         <span>    </span>
         <button 
             onClick = {this.deleteClick}
-            className = {"button is-warning"}
         >
-            Delete
+            Delete this book
         </button> 
        </div>  
     )

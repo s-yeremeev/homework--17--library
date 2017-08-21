@@ -9,7 +9,7 @@ export default class LibraryContainer extends React.Component {
   constructor(props) {
     super(props)
     this.inputName = null
-    this.inputAutor = null
+    this.inputAuthor = null
   }
 
   /**
@@ -25,19 +25,19 @@ export default class LibraryContainer extends React.Component {
   processingDataSubmitForm = (event) => {
     event.preventDefault()
     try {
-      if (!this.inputName || !this.inputAutor) throw new Error("Input component is not defined!")
+      if (!this.inputName || !this.inputAuthor) throw new Error("Input component is not defined!")
       
-        if (this.inputName.value && this.inputAutor.value) {
+        if (this.inputName.value && this.inputAuthor.value) {
         const library = this.readingBooksOfLibrary()
         library.unshift({
           name: "\"" + this.inputName.value + "\"",
-          autor: "\"" + this.inputAutor.value + "\""
+          author: "\"" + this.inputAuthor.value + "\""
         })
 
         this.setState({ library }, () => { 
           this.addNewBookInLibrary(library)
           this.inputName.value = ""
-          this.inputAutor.value = ""
+          this.inputAuthor.value = ""
         })
       }
     } catch ({ e }) {
@@ -84,27 +84,22 @@ export default class LibraryContainer extends React.Component {
       <div>
         <form onSubmit = {this.processingDataSubmitForm}>
           <input 
-                type = {"text"}
                 ref = {(input) => this.inputName = input}
-                placeholder={"Name..."}
-                /* className = {"input is-primary"} */
+                placeholder = {"Name book ..."}
           />
           <span>   </span>
           <input 
-                type = {"text"}
-                ref = {(input) => this.inputAutor = input}
-                placeholder = {"Autor..."}
-                /* className = {"input is-primary"} */
+                ref = {(input) => this.inputAuthor = input}
+                placeholder = {"Book author ..."}
           />
           <span>   </span>
           <button 
                 type = {"submit"}
-                className = {"button is-primary"}
           >
                 Add new books
           </button>
         </form>
-         <div><font size="6" color="red">Database books ("Name book" - "Autor book")</font></div>
+         <div><font size="6" color="red">Database books ("Name book" - "Book author")</font></div>
         <div id = "databooks">
           {library.map((el, i) => (<BooksComponent 
             key = {i} 
