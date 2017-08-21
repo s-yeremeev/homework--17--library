@@ -98,9 +98,9 @@ export default class LibraryContainer extends React.Component {
           >
                 Add new books
           </button>
-        </form>
-         <div><font size="6" color="red">Database books ("Name book" - "Book author")</font></div>
+        </form>         
         <div id = "databooks">
+        <div><font size="6" color="red">Database books ("Name book" - "Book author")</font></div>
           {library.map((el, i) => (<BooksComponent 
             key = {i} 
             clickDeleteButton = {this.clickDeleteButton}            
