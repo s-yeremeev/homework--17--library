@@ -1,6 +1,10 @@
 import React from "react"
 import BooksComponent from "./books"
 
+/**
+ * @class {LibraryContainer}
+ * Class for creating fields for data entry
+ */
 export default class LibraryContainer extends React.Component {
   state = {
     library: []
@@ -25,15 +29,13 @@ export default class LibraryContainer extends React.Component {
   processingDataSubmitForm = (event) => {
     event.preventDefault()
     try {
-      if (!this.inputName || !this.inputAuthor) throw new Error("Input component is not defined!")
-      
+      if (!this.inputName || !this.inputAuthor) throw new Error("Input component is not defined!")      
         if (this.inputName.value && this.inputAuthor.value) {
         const library = this.readingBooksOfLibrary()
         library.unshift({
           name: "\"" + this.inputName.value + "\"",
           author: "\"" + this.inputAuthor.value + "\""
         })
-
         this.setState({ library }, () => { 
           this.addNewBookInLibrary(library)
           this.inputName.value = ""
@@ -82,19 +84,19 @@ export default class LibraryContainer extends React.Component {
     const { library } = this.state
     return (
       <div>
-        <form onSubmit = {this.processingDataSubmitForm}>
+        <form onSubmit = { this.processingDataSubmitForm }>
           <input 
-                ref = {(input) => this.inputName = input}
-                placeholder = {"Name book ..."}
+                ref = { (input) => this.inputName = input }
+                placeholder = { "Name book ..." }
           />
           <span>   </span>
           <input 
-                ref = {(input) => this.inputAuthor = input}
-                placeholder = {"Book author ..."}
+                ref = { (input) => this.inputAuthor = input }
+                placeholder = { "Book author ..." }
           />
           <span>   </span>
           <button 
-                type = {"submit"}
+                type = { "submit" }
           >
                 Add new books
           </button>
@@ -103,7 +105,7 @@ export default class LibraryContainer extends React.Component {
         <div><font size="6" color="red">Database books ("Name book" - "Book author")</font></div>
           {library.map((el, i) => (<BooksComponent 
             key = {i} 
-            clickDeleteButton = {this.clickDeleteButton}            
+            clickDeleteButton = { this.clickDeleteButton }            
             params = {{...el, i}}
           />)) }
         </div>

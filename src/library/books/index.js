@@ -1,10 +1,17 @@
 import React from "react"
 
+/**
+ * @class {BooksComponent}
+ * Class for displaying stored data
+ */
 export default class BooksComponent extends React.Component {
   constructor(props) {
     super(props)
   }
 
+  /**
+   * Delete of an entity
+   */
   deleteClick = (event) => {
     event.preventDefault()
     const { params: { i } } = this.props
@@ -15,7 +22,7 @@ export default class BooksComponent extends React.Component {
     const { params: { name, author } } = this.props
     
     return (
-       <div>
+      <div>
         <span>{ name }</span>
         <span> - </span>
         <span>{ author }</span>
@@ -25,7 +32,7 @@ export default class BooksComponent extends React.Component {
         >
             Delete this book
         </button> 
-       </div>  
+      </div>  
     )
   }
 }
